@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Landing = () => (
     <div>
         <div><h1>Evyner</h1></div>

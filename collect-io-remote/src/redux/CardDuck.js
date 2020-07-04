@@ -27,12 +27,12 @@ export const loadingProducts = (payload) => ({
 export const loadProducts = () => {
     return (dispatch) => {
       dispatch(loadingProducts());
-      getProducts()
-        .then((response) => {
-          dispatch(getProductsSuccess(response.data));
-        })
-        .catch((error) => {
-          dispatch(productsError(error.toString()));
-        });
+    //   getProducts()
+    //     .then((response) => {
+    //       dispatch(getProductsSuccess(response.data));
+    //     })
+    //     .catch((error) => {
+    //       dispatch(productsError(error.toString()));
+    //     });
     };
   };
