@@ -1,0 +1,38 @@
+Collect.io
+
+Pasos pendientes:
+1. Comprar dominio
+
+Pasos generales para iniciar app front:
+1. Instalar dependencias
+	- axios
+	- dotenv
+	- react-dom
+	- react-router-dom
+	- redux* (si es compleja la lógica)
+	- react-redux
+	- redux-thunk (si se van a manejar llamadas asyncronas)
+	- styled-components
+	- ui-kit *
+2. Agregar .gitignore
+3. Agregar .env
+4. Agregar Routes.js
+5. Agregar carpetas base:
+	- components y dentro common
+	- redux
+	- utils
+6. Agregar moduleAliases
+	- ~components: "./src/components"
+	- ~commons: "./src/components/common"
+	- ~redux: "./src/redux"
+	- ~utils: "./src/utils"
+7. Crear la base de los Ducks que se vayan a utilizar dentro de redux
+8. Crear el store
+9. En index.js
+	- importar e implementar:
+		- BrowserRouter
+		- Provider
+		- store (redux)
+		- uikit+icons
+10. Crear el App.js
+11. Crear el Routes.js
