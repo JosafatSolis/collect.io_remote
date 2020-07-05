@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Landing from "./components/Landing";
-import Filling from "./components/Filling";
+import Landing from "./components/Landing/Landing";
+import Filling from "./components/Filling/Filling";
 import Sent from "./components/Sent";
 import Validating from "./components/Validating";
 

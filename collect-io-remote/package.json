@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "link-module-alias"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,5 +45,8 @@
     "~commons": "./src/components/common",
     "~redux": "./src/redux",
     "~utils": "./src/utils"
+  },
+  "devDependencies": {
+    "link-module-alias": "^1.2.0"
   }
 }

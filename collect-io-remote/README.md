@@ -15,7 +15,7 @@ The screen has the following parts:
 <li>"Enter button"</li>
 </ul>
 
-### `Validating - Stright to te card`
+### `Validating - Straight to the card`
 ### /:card
 
 <ul>
@@ -58,6 +58,8 @@ Once it has been sent, the screen shows the following components:
 <li>Visit us --> Collect.io home Page
 </ul>
 
-## Restricciones
+## Notes
 
-1. El título de la tarjeta puede contener máximo 25* caracterres.
+1. The card's title's lenght is maximum 25 characters.
+2. There are 2 domains to be used: collectio.site y collection.space
+3. The code of the card can be followed by a description, in cases where the data is already stored in the Local Storage.
