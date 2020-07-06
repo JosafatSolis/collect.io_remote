@@ -2,37 +2,42 @@ import React from "react";
 import styled from "styled-components";
 import "./Landing.css";
 import logo from "../../assets/blacklogo.png";
+import EnterButton from "../common/EnterButton";
+import SendMail from "../SendMail";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+
 
 const LogoImg = styled.img`
   width: 175px;
   margin: 40px auto auto auto;
 `;
 
+const AnotherH2 = styled.h2`
+  margin-top: 30px;
+`;
+
 const CodeInput = styled.input`
-    font-size: xx-large;
-    width: 80%;
-    margin: 0px auto 35px auto;
+  font-size: xx-large;
+  width: 80%;
+  max-width: 250px;
+  margin: 0px auto 35px auto;
 `;
 
-const EnterButton = styled.button`
-    width: 50%;
-    height: 1.6em;
-    font-size: xx-large;
-    background-image: linear-gradient(
-        to right,
-        hsl(211, 100%, 50%),
-        hsl(179, 100%, 30%)
-    );
-    transition: background-image 0.5s linear;
-    color: #FFF;
-    border-radius: 5px;
-`;
-
-const Landing = () => (
+const Landing = (props) => (
   <div>
     <LogoImg src={logo} />
-    <h2>Code:</h2>
+    {props.resend && (
+      <div>
+        <h1>Card Sent!!</h1>
+        <EnterButton>Fill again <FontAwesomeIcon icon={faRetweet} /></EnterButton>
+      </div>
+    )}
+    {props.resend && <SendMail />}
+
     <div>
+      {props.resend && <AnotherH2>Fill another:</AnotherH2>}
+      {!props.resend && <h2>Code:</h2>}
       <form>
         <CodeInput list="codes" name="code" />
         <datalist id="codes">

@@ -1,22 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import TextField from "../common/TextField";
+
+const QuestionsSection = styled.section`
+  padding-top: 20px;
+  overflow: scroll;
+`;
 
 const Filling = () => (
   <div>
-    <section id="header">
-      <div>
-        <Link to="/">&lt ATRAS</Link>
-      </div>
-      <div>
-        <h1>T Í T U L O</h1>
-      </div>
-    </section>
-    <section id="questions">
-      <h1>Preguntas</h1>
-    </section>
-    <section id="footer">
-      <button>¡ENVIAR!</button>
-    </section>
+    <QuestionsSection>
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+      <TextField />
+    </QuestionsSection>
   </div>
 );
 

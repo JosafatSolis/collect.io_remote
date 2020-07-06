@@ -28,7 +28,7 @@ The screen has the following parts:
 
 This screen has the following elements:
 <ul>
-<li>Title Bar **fixed**, containing:
+<li>Title Bar, containing:
 <ul>
 <li>Home button
 <li>Card Title
@@ -63,3 +63,9 @@ Once it has been sent, the screen shows the following components:
 1. The card's title's lenght is maximum 25 characters.
 2. There are 2 domains to be used: collectio.site y collection.space
 3. The code of the card can be followed by a description, in cases where the data is already stored in the Local Storage.
+4. The type of data that can be retrieved is:
+- Text
+- Number
+- Date
+- Boolean
+- Options
