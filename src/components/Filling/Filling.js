@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import TextField from "../common/TextField";
+import NumberField from "../common/NumberField";
+import DateField from "../common/DateField";
+import BooleanField from "../common/BooleanField";
+import OptionsField from "../common/OptionsField";
 
 const QuestionsSection = styled.section`
   padding-top: 20px;
@@ -11,17 +15,10 @@ const Filling = () => (
   <div>
     <QuestionsSection>
       <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
-      <TextField />
+      <NumberField />
+      <DateField />
+      <BooleanField />
+      <OptionsField />
     </QuestionsSection>
   </div>
 );

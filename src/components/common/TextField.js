@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faParagraph } from "@fortawesome/free-solid-svg-icons";
 
 const FieldDiv = styled.div`
   text-align: left;
@@ -20,7 +22,7 @@ const TextField = (props) => {
   return (
     <div>
       <FieldDiv>
-        <FieldLabel>Field Name... :</FieldLabel>
+        <FieldLabel><FontAwesomeIcon icon={faParagraph} /> Field Name... :</FieldLabel>
       </FieldDiv>
       <TextInput rows="2"/>
     </div>
