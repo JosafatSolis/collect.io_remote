@@ -1,13 +1,17 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Routes from './Routes';
-import './App.css';
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import Routes from "./Routes";
+import AppContext from "./AppContext";
+import "./App.css";
 
 function App() {
+  const [appState, setAppState] = useState({});
   return (
-    <div className="App">
-      <Routes />
-    </div>
+    <AppContext.Provider value={{appState, setAppState}}>
+      <div className="App">
+        <Routes />
+      </div>
+    </AppContext.Provider>
   );
 }
 

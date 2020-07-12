@@ -8,7 +8,7 @@ import OptionsField from "../common/OptionsField";
 
 const QuestionsSection = styled.section`
   padding-top: 20px;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const Filling = () => (

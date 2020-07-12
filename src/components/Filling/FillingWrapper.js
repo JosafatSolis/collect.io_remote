@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "../../AppContext";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,25 +26,36 @@ const TitleH1 = styled.h1`
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 `;
 
-const FillingWrapper = () => (
-  <div>
-    <HeaderSection>
-      <Link to="/" id="headerlink"
-        style={{padding: "15px",
+const FillingWrapper = () => {
+  const { appState, setAppState } = useContext(AppContext);
+  console.log(appState);
+  return (
+    <div>
+      <HeaderSection>
+        <Link
+          to="/"
+          id="headerlink"
+          style={{
+            padding: "15px",
             float: "left",
             textDecoration: "none",
             color: "white",
-            fontSize: "xx-large"}}>
-        <FontAwesomeIcon className="Home-icon" icon={faHome} />{" "}
-      </Link>
-      <TitleH1>Collectio</TitleH1>
-    </HeaderSection>
-    <h1>Fill out the Card</h1>
-    <Filling />
-    <section id="footer">
-        <EnterButton>Complete!</EnterButton>
+            fontSize: "xx-large",
+          }}
+        >
+          <FontAwesomeIcon className="Home-icon" icon={faHome} />{" "}
+        </Link>
+        <TitleH1>{appState.title}</TitleH1>
+      </HeaderSection>
+      <h1>Fill out the Card</h1>
+      <Filling />
+      <section id="footer">
+        <Link to={`/${appState.currentCode}/sent`}>
+          <EnterButton>Complete!</EnterButton>
+        </Link>
       </section>
-  </div>
-);
+    </div>
+  );
+};
 
 export default FillingWrapper;

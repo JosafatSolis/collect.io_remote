@@ -4,8 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from "react-redux";
-import store from "./redux/store";
 
 const WithRouter = () => (
   <BrowserRouter  >
@@ -13,15 +11,9 @@ const WithRouter = () => (
   </BrowserRouter>
 );
 
-const WithProvider = () => (
-  <Provider store={store}>
-    <WithRouter />
-  </Provider>
-)
-
 ReactDOM.render(
   <React.StrictMode>
-    <WithProvider />
+    <WithRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );

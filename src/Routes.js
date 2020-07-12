@@ -9,9 +9,10 @@ const Routes = () => (
         <Route exact path="/">
             <Landing resend={false} />
         </Route>
-        <Route exact path="/:card">
-            <Validating />
-        </Route>
+          <Route exact path="/not_found">
+            <Landing not_found={true} />
+        </Route>      
+        <Route exact path="/:code" component={Validating} />
         <Route exact path="/:card/filling" >
             <FillingWrapper />
         </Route>
