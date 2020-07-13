@@ -14,21 +14,24 @@ const FieldLabel = styled.label`
 `;
 
 const NumberInput = styled.input`
-  font-size: x-large;
+  font-size: xxx-large;
+  font-weight: bold;
   text-align: center;
   width: 80%;
   margin: 0px auto 35px auto;
+  height: 150px;
+  color: red;
 `;
 
-const NumberField = (props) => {
+const MainNumericField = (props) => {
   return (
     <div>
       <FieldDiv>
-        <FieldLabel><FontAwesomeIcon icon={faSort} /> {props.fieldName} :</FieldLabel>
+        <FieldLabel><FontAwesomeIcon icon={faSort} /> {props.labelText} :</FieldLabel>
       </FieldDiv>
-      <NumberInput type="number" name={props.fieldName} step="1" onChange={props.handleChange} />
+      <NumberInput type="number" placeholder="0.00" name={props.fieldName} step="1" onChange={props.handleChange} />
     </div>
   );
 };
 
-export default NumberField;
+export default MainNumericField;

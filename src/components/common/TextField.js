@@ -22,9 +22,9 @@ const TextField = (props) => {
   return (
     <div>
       <FieldDiv>
-        <FieldLabel><FontAwesomeIcon icon={faParagraph} /> Field Name... :</FieldLabel>
+        <FieldLabel><FontAwesomeIcon icon={faParagraph} /> {props.fieldName} :</FieldLabel>
       </FieldDiv>
-      <TextInput rows="2"/>
+      <TextInput name={props.fieldName} rows="2" onChange={props.handleChange} />
     </div>
   );
 };

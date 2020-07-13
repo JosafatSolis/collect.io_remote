@@ -10,7 +10,7 @@ const FieldLabel = styled.label`
   font-size: x-large;
 `;
 
-const TextInput = styled.textarea`
+const DateInput = styled.input`
   font-size: x-large;
   width: 80%;
   margin: 0px auto 35px auto;
@@ -20,9 +20,9 @@ const DateField = (props) => {
   return (
     <div>
       <FieldDiv>
-        <FieldLabel>Field Name... :</FieldLabel>
+        <FieldLabel>{props.fieldName} :</FieldLabel>
       </FieldDiv>
-      <TextInput rows="2"/>
+      <DateInput type="date" name={props.fieldName} onChange={props.handleChange}/>
     </div>
   );
 };

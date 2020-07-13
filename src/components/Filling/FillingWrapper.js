@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import AppContext from "../../AppContext";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import Filling from "./Filling";
-import EnterButton from "../common/EnterButton";
 
 const HeaderSection = styled.header`
   overflow: hidden;
@@ -27,7 +26,7 @@ const TitleH1 = styled.h1`
 `;
 
 const FillingWrapper = () => {
-  const { appState, setAppState } = useContext(AppContext);
+  const { appState } = useContext(AppContext);
   console.log(appState);
   return (
     <div>
@@ -48,12 +47,7 @@ const FillingWrapper = () => {
         <TitleH1>{appState.title}</TitleH1>
       </HeaderSection>
       <h1>Fill out the Card</h1>
-      <Filling />
-      <section id="footer">
-        <Link to={`/${appState.currentCode}/sent`}>
-          <EnterButton>Complete!</EnterButton>
-        </Link>
-      </section>
+      <Filling appState={appState} />
     </div>
   );
 };

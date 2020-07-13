@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import AppContext from "../AppContext";
 import { useHistory } from "react-router-dom";
-import { getFormat } from "../services/formatServices";
+import { getFormat } from "../services/apiServices";
 
 const Validating = (props) => {
   // Gets the code trying to access

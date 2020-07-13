@@ -8,21 +8,28 @@ const FieldDiv = styled.div`
 
 const FieldLabel = styled.label`
   font-size: x-large;
+  width: 80%;
 `;
 
-const TextInput = styled.textarea`
-  font-size: x-large;
-  width: 80%;
-  margin: 0px auto 35px auto;
+const BoolInput = styled.input`
+  transform: scale(2);
+  margin: 0px auto 35px 20px;
 `;
 
 const BooleanField = (props) => {
   return (
     <div>
       <FieldDiv>
-        <FieldLabel>Field Name... :</FieldLabel>
+        <FieldLabel>
+          {props.fieldName}
+          <BoolInput
+            type="checkbox"
+            name={props.fieldName}
+            id={props.fieldName}
+            onChange={props.handleChange}
+          />
+        </FieldLabel>
       </FieldDiv>
-      <TextInput rows="2"/>
     </div>
   );
 };
