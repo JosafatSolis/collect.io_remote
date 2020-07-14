@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AppContext from "../../AppContext";
 import styled from "styled-components";
 import "./Landing.css";
 import logo from "../../assets/blacklogo.png";
-import EnterButton from "../common/EnterButton";
-import SendMail from "../SendMail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRetweet } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import EnterButton from "../common/EnterButton";
 
 const LogoImg = styled.img`
   width: 175px;
@@ -24,53 +24,48 @@ const CodeInput = styled.input`
   margin: 0px auto 35px auto;
 `;
 
-const NotFoundH2 = styled.h2`
+const RedH2 = styled.h2`
   color: red;
 `;
 
 const Landing = (props) => {
+  const { appState } = useContext(AppContext);
 
   const [currentState, setCurrentState] = useState({});
-
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
-    setCurrentState(prevState => ({ ...prevState, [key]:value }));
-  }
+    setCurrentState((prevState) => ({ ...prevState, [key]: value }));
+  };
 
   return (
     <div>
       <LogoImg src={logo} />
       {props.not_found && (
         <div>
-          <NotFoundH2>
+          <RedH2>
             CODE not found !!
             <br />
             Try again
-          </NotFoundH2>
+          </RedH2>
         </div>
       )}
-      {props.resend && (
+      {appState.resend && (
         <div>
-          <h1>Card Sent!!</h1>
-          <EnterButton>
-            Fill again <FontAwesomeIcon icon={faRetweet} />
-          </EnterButton>
+          <RedH2>Card Sent!!</RedH2>
+          <Link to={`/${appState.currentCode}`}>
+            <EnterButton>
+              Fill again <FontAwesomeIcon icon={faRetweet} />
+            </EnterButton>
+          </Link>
         </div>
       )}
-      {props.resend && <SendMail />}
 
       <div>
-        {props.resend && <AnotherH2>Fill another:</AnotherH2>}
-        {!props.resend && <h2>Code:</h2>}
+        {appState.resend && <AnotherH2>Fill another:</AnotherH2>}
+        {!appState.resend && <h2>Code:</h2>}
         <form>
           <CodeInput list="codes" name="code" onChange={handleChange} />
-          <datalist id="codes">
-            <option value="ABDT - Formato de Recepción de MP" />
-            <option value="TOEB - Formato de Entrega de MP" />
-            <option value="J353 - Formato de Reporte de Falla" />
-            <option value="5935 - Formato de Captura de Quejas" />
-          </datalist>
         </form>
       </div>
       <div>

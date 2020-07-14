@@ -7,7 +7,7 @@ import Validating from "./components/Validating";
 const Routes = () => (
     <Switch>
         <Route exact path="/">
-            <Landing resend={false} />
+            <Landing />
         </Route>
           <Route exact path="/not_found">
             <Landing not_found={true} />
@@ -17,7 +17,7 @@ const Routes = () => (
             <FillingWrapper />
         </Route>
         <Route exact path="/:card/sent">
-            <Landing resend={true} />
+            <Landing />
         </Route>
     </Switch>
 );

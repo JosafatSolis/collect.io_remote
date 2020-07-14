@@ -21,7 +21,7 @@ const Validating = (props) => {
         setAppState({});
         history.push(`/not_found`);
       });
-  }, [history]);
+  }, [history, code, setAppState]);
 
   return (
     <div>

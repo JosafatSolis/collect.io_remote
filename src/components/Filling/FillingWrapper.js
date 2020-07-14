@@ -26,8 +26,7 @@ const TitleH1 = styled.h1`
 `;
 
 const FillingWrapper = () => {
-  const { appState } = useContext(AppContext);
-  console.log(appState);
+  const { appState, setAppState } = useContext(AppContext);
   return (
     <div>
       <HeaderSection>
@@ -47,7 +46,7 @@ const FillingWrapper = () => {
         <TitleH1>{appState.title}</TitleH1>
       </HeaderSection>
       <h1>Fill out the Card</h1>
-      <Filling appState={appState} />
+      <Filling appState={appState} setAppState={setAppState} />
     </div>
   );
 };

@@ -26,7 +26,7 @@ const NumberField = (props) => {
       <FieldDiv>
         <FieldLabel><FontAwesomeIcon icon={faSort} /> {props.fieldName} :</FieldLabel>
       </FieldDiv>
-      <NumberInput type="number" name={props.fieldName} step="1" onChange={props.handleChange} />
+      <NumberInput type="number" name={props.fieldName} step="1" placeholder="0" onChange={props.handleChange} />
     </div>
   );
 };

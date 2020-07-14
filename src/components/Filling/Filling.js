@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { postNewRecord } from "../../services/apiServices";
 import styled from "styled-components";
 import TextField from "../common/TextField";
-import NumberField from "../common/NumberField";
 import DateField from "../common/DateField";
-import BooleanField from "../common/BooleanField";
+import NumberField from "../common/NumberField";
 import EnterButton from "../common/EnterButton";
+import BooleanField from "../common/BooleanField";
 import MainNumericField from "../common/MainNumericField";
 
 const QuestionsSection = styled.section`
@@ -17,40 +17,78 @@ const QuestionsSection = styled.section`
 const Filling = (props) => {
   const [currentState, setCurrentState] = useState({});
 
+  useEffect(() => {
+    const addInitValue = (key, value) => {
+      setCurrentState((prevState) => ({ ...prevState, [key]: value }));
+    };
+
+    const defineInitValue = (type) => {
+      switch (type) {
+        case "String":
+          // Nothing is added as default
+          return undefined;
+        case "Number":
+          return 0;
+        case "Date":
+          // Nothing is added as default
+          return undefined;
+        case "Boolean":
+          return false;
+        default:
+          console.log("Field type not found!!");
+          return undefined;
+      }
+    };
+
+    props.appState.tagFields.forEach((tagField) => {
+      addInitValue(tagField.fieldName, defineInitValue(tagField.type));
+    });
+  }, [props.appState.tagFields]);
+
   const handleChange = (e) => {
     const key = e.target.name;
     let value = e.target.value;
-    console.log(value);
-    // if (value === "on") value = true;
-    // if (value === "off") value = false;
     setCurrentState((prevState) => ({ ...prevState, [key]: value }));
-    console.log(currentState);
   };
+
+  const handleCheckedChange = (e) => {
+    const key = e.target.name;
+    let value = e.target.checked;
+    setCurrentState((prevState) => ({ ...prevState, [key]: value }));
+  };
+
   const history = useHistory();
+
+  const addValueField = () => {
+    const { value, ...tagValues } = currentState;
+    // Loops all tags and adds value field to each
+    let tags = [];
+    for (var key in tagValues) {
+      const keyName = key;
+      let tagField = props.appState.tagFields.filter(
+        (tagField) => tagField.fieldName === keyName
+      )[0];
+      tagField.value = tagValues[key];
+      tags.push(tagField);
+      return tags;
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const complete =
-      1 + props.appState.tagFields.length === Object.keys(currentState).length;
+      1 + props.appState.tagFields.length ===
+      Object.values(currentState).filter((val) => typeof val !== "undefined").length;
     if (complete) {
-      const { value, ...tagValues } = currentState;
-      // Recorre los tags y agrega el valor a lo original
-      let tags = [];
-      for (var key in tagValues) {
-        let tagField = props.appState.tagFields.filter(
-          (tagField) => tagField.fieldName === key
-        )[0];
-        tagField.value = tagValues[key];
-        tags.push(tagField);
-      }
       const newRecord = {
         format: props.appState._id,
-        value,
+        value: currentState.value,
         code: props.appState.currentCode,
-        tagValues: tags,
+        tagValues: addValueField(),
       };
       postNewRecord(newRecord)
         .then((resp) => {
+          props.setAppState((prevState) => ({ ...prevState, resend: true }));
           history.push(`/${props.appState.currentCode}/sent`);
         })
         .catch((reason) => {
@@ -80,7 +118,6 @@ const Filling = (props) => {
                     fieldName={tagField.fieldName}
                   />
                 );
-                break;
               case "Number":
                 return (
                   <NumberField
@@ -89,7 +126,6 @@ const Filling = (props) => {
                     fieldName={tagField.fieldName}
                   />
                 );
-                break;
               case "Date":
                 return (
                   <DateField
@@ -98,16 +134,14 @@ const Filling = (props) => {
                     fieldName={tagField.fieldName}
                   />
                 );
-                break;
               case "Boolean":
                 return (
                   <BooleanField
                     key={tagField.fieldName}
-                    handleChange={handleChange}
+                    handleChange={handleCheckedChange}
                     fieldName={tagField.fieldName}
                   />
                 );
-                break;
               default:
                 console.log("Field type not found!!");
                 break;
