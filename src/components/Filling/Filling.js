@@ -70,8 +70,8 @@ const Filling = (props) => {
       )[0];
       tagField.value = tagValues[key];
       tags.push(tagField);
-      return tags;
     }
+    return tags;
   };
 
   const handleSubmit = (e) => {
