@@ -2,6 +2,7 @@
   "name": "collect-io-remote",
   "version": "0.1.0",
   "engines": {
+    "node": "14.3.x",
     "yarn": "1.22.x"
   },
   "private": true,
