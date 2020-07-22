@@ -1,6 +1,9 @@
 {
   "name": "collect-io-remote",
   "version": "0.1.0",
+  "engines": {
+    "yarn": "1.22.x"
+  },
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
