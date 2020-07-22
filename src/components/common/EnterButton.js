@@ -15,6 +15,7 @@ color: #FFF;
 border-radius: 5px;
 overflow: auto;
 margin-bottom: 20px;
+padding-top: 5px;
 `;
 
 export default EnterButton;

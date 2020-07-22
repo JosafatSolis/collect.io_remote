@@ -55,7 +55,7 @@ const Landing = (props) => {
           <RedH2>Card Sent!!</RedH2>
           <Link to={`/${appState.currentCode}`}>
             <EnterButton>
-              Fill again <FontAwesomeIcon icon={faRetweet} />
+              <span>Fill again <FontAwesomeIcon icon={faRetweet} /></span>
             </EnterButton>
           </Link>
         </div>
